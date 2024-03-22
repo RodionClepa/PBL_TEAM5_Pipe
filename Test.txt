@@ -1,0 +1,4 @@
+pipe myPipe():
+    |> bb()
+    ||> vv()
+    |||> gggHe()
