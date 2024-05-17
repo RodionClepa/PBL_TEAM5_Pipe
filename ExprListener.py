@@ -17,12 +17,66 @@ class ExprListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by ExprParser#pipeline_flag.
-    def enterPipeline_flag(self, ctx:ExprParser.Pipeline_flagContext):
+    # Enter a parse tree produced by ExprParser#expression.
+    def enterExpression(self, ctx:ExprParser.ExpressionContext):
         pass
 
-    # Exit a parse tree produced by ExprParser#pipeline_flag.
-    def exitPipeline_flag(self, ctx:ExprParser.Pipeline_flagContext):
+    # Exit a parse tree produced by ExprParser#expression.
+    def exitExpression(self, ctx:ExprParser.ExpressionContext):
+        pass
+
+
+    # Enter a parse tree produced by ExprParser#variable_assignment.
+    def enterVariable_assignment(self, ctx:ExprParser.Variable_assignmentContext):
+        pass
+
+    # Exit a parse tree produced by ExprParser#variable_assignment.
+    def exitVariable_assignment(self, ctx:ExprParser.Variable_assignmentContext):
+        pass
+
+
+    # Enter a parse tree produced by ExprParser#variable_value.
+    def enterVariable_value(self, ctx:ExprParser.Variable_valueContext):
+        pass
+
+    # Exit a parse tree produced by ExprParser#variable_value.
+    def exitVariable_value(self, ctx:ExprParser.Variable_valueContext):
+        pass
+
+
+    # Enter a parse tree produced by ExprParser#array_value.
+    def enterArray_value(self, ctx:ExprParser.Array_valueContext):
+        pass
+
+    # Exit a parse tree produced by ExprParser#array_value.
+    def exitArray_value(self, ctx:ExprParser.Array_valueContext):
+        pass
+
+
+    # Enter a parse tree produced by ExprParser#number.
+    def enterNumber(self, ctx:ExprParser.NumberContext):
+        pass
+
+    # Exit a parse tree produced by ExprParser#number.
+    def exitNumber(self, ctx:ExprParser.NumberContext):
+        pass
+
+
+    # Enter a parse tree produced by ExprParser#variable_access.
+    def enterVariable_access(self, ctx:ExprParser.Variable_accessContext):
+        pass
+
+    # Exit a parse tree produced by ExprParser#variable_access.
+    def exitVariable_access(self, ctx:ExprParser.Variable_accessContext):
+        pass
+
+
+    # Enter a parse tree produced by ExprParser#function_call.
+    def enterFunction_call(self, ctx:ExprParser.Function_callContext):
+        pass
+
+    # Exit a parse tree produced by ExprParser#function_call.
+    def exitFunction_call(self, ctx:ExprParser.Function_callContext):
         pass
 
 
@@ -44,93 +98,12 @@ class ExprListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by ExprParser#function_args.
-    def enterFunction_args(self, ctx:ExprParser.Function_argsContext):
-        pass
-
-    # Exit a parse tree produced by ExprParser#function_args.
-    def exitFunction_args(self, ctx:ExprParser.Function_argsContext):
-        pass
-
-
-    # Enter a parse tree produced by ExprParser#function_name.
-    def enterFunction_name(self, ctx:ExprParser.Function_nameContext):
-        pass
-
-    # Exit a parse tree produced by ExprParser#function_name.
-    def exitFunction_name(self, ctx:ExprParser.Function_nameContext):
-        pass
-
-
-    # Enter a parse tree produced by ExprParser#pipeline_def.
-    def enterPipeline_def(self, ctx:ExprParser.Pipeline_defContext):
-        pass
-
-    # Exit a parse tree produced by ExprParser#pipeline_def.
-    def exitPipeline_def(self, ctx:ExprParser.Pipeline_defContext):
-        pass
-
-
     # Enter a parse tree produced by ExprParser#single_pipe_symbol.
     def enterSingle_pipe_symbol(self, ctx:ExprParser.Single_pipe_symbolContext):
         pass
 
     # Exit a parse tree produced by ExprParser#single_pipe_symbol.
     def exitSingle_pipe_symbol(self, ctx:ExprParser.Single_pipe_symbolContext):
-        pass
-
-
-    # Enter a parse tree produced by ExprParser#double_pipe_symbol.
-    def enterDouble_pipe_symbol(self, ctx:ExprParser.Double_pipe_symbolContext):
-        pass
-
-    # Exit a parse tree produced by ExprParser#double_pipe_symbol.
-    def exitDouble_pipe_symbol(self, ctx:ExprParser.Double_pipe_symbolContext):
-        pass
-
-
-    # Enter a parse tree produced by ExprParser#tripple_pipe_symbol.
-    def enterTripple_pipe_symbol(self, ctx:ExprParser.Tripple_pipe_symbolContext):
-        pass
-
-    # Exit a parse tree produced by ExprParser#tripple_pipe_symbol.
-    def exitTripple_pipe_symbol(self, ctx:ExprParser.Tripple_pipe_symbolContext):
-        pass
-
-
-    # Enter a parse tree produced by ExprParser#pipe.
-    def enterPipe(self, ctx:ExprParser.PipeContext):
-        pass
-
-    # Exit a parse tree produced by ExprParser#pipe.
-    def exitPipe(self, ctx:ExprParser.PipeContext):
-        pass
-
-
-    # Enter a parse tree produced by ExprParser#pipe_block.
-    def enterPipe_block(self, ctx:ExprParser.Pipe_blockContext):
-        pass
-
-    # Exit a parse tree produced by ExprParser#pipe_block.
-    def exitPipe_block(self, ctx:ExprParser.Pipe_blockContext):
-        pass
-
-
-    # Enter a parse tree produced by ExprParser#tab.
-    def enterTab(self, ctx:ExprParser.TabContext):
-        pass
-
-    # Exit a parse tree produced by ExprParser#tab.
-    def exitTab(self, ctx:ExprParser.TabContext):
-        pass
-
-
-    # Enter a parse tree produced by ExprParser#space.
-    def enterSpace(self, ctx:ExprParser.SpaceContext):
-        pass
-
-    # Exit a parse tree produced by ExprParser#space.
-    def exitSpace(self, ctx:ExprParser.SpaceContext):
         pass
 
 
@@ -149,42 +122,6 @@ class ExprListener(ParseTreeListener):
 
     # Exit a parse tree produced by ExprParser#right_par.
     def exitRight_par(self, ctx:ExprParser.Right_parContext):
-        pass
-
-
-    # Enter a parse tree produced by ExprParser#comma.
-    def enterComma(self, ctx:ExprParser.CommaContext):
-        pass
-
-    # Exit a parse tree produced by ExprParser#comma.
-    def exitComma(self, ctx:ExprParser.CommaContext):
-        pass
-
-
-    # Enter a parse tree produced by ExprParser#two_points.
-    def enterTwo_points(self, ctx:ExprParser.Two_pointsContext):
-        pass
-
-    # Exit a parse tree produced by ExprParser#two_points.
-    def exitTwo_points(self, ctx:ExprParser.Two_pointsContext):
-        pass
-
-
-    # Enter a parse tree produced by ExprParser#var_name.
-    def enterVar_name(self, ctx:ExprParser.Var_nameContext):
-        pass
-
-    # Exit a parse tree produced by ExprParser#var_name.
-    def exitVar_name(self, ctx:ExprParser.Var_nameContext):
-        pass
-
-
-    # Enter a parse tree produced by ExprParser#var_def.
-    def enterVar_def(self, ctx:ExprParser.Var_defContext):
-        pass
-
-    # Exit a parse tree produced by ExprParser#var_def.
-    def exitVar_def(self, ctx:ExprParser.Var_defContext):
         pass
 
 
