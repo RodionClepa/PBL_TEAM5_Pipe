@@ -1,6 +1,7 @@
 x = "    MYSTriNG   "
 x = [1, 0, 3, 0, -2, -3, 44.5, 5]
-x |> allAbs()|> mapSquare() |> increment(333) |> decrement(-33) |> multiply(3) |> division(2)
+x |> allAbs()|> mapSquare() |> increment(333) |> decrement(-33) |> multiply(3)
+x |> division(2)
 
 y = "    MYSTriNG   "
 y |> trim()|> replaceAll("i", "o")

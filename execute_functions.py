@@ -5,7 +5,8 @@ from MyPipes import myPipe
 
 class MyListener(ParseTreeListener):
     def __init__(self):
-        self.listPipe = {}
+        self.listPipe = []
+        self.idxPipe = -1
 
     def enterFunction_call(self, ctx):
         function_name = ctx.VAR_NAME().getText()
@@ -30,7 +31,7 @@ class MyListener(ParseTreeListener):
 
         # print(args)
         
-        self.listPipe[varName].addPipeFunctions(function_name, args)
+        self.listPipe[self.idxPipe].addPipeFunctions(function_name, args)
         # print(self.listPipe[varName].pipeFunctions)
 
     
@@ -49,7 +50,8 @@ class MyListener(ParseTreeListener):
                 else:
                     self.x.append(int(value))
         self.type = "array"
-        self.listPipe[varName] = myPipe(varName, self.x, self.type)
+        self.idxPipe+=1
+        self.listPipe.append(myPipe(varName, self.x, self.type))
         
 
     def enterVariable_assignment(self, ctx):
@@ -58,7 +60,8 @@ class MyListener(ParseTreeListener):
             self.x = value[1:-1]
             self.type = "string"
             varName = ctx.getChild(0).getText()
-            self.listPipe[varName] = myPipe(varName, self.x, self.type)
+            self.idxPipe+=1
+            self.listPipe.append(myPipe(varName, self.x, self.type))
 
 
 from antlr4.error.ErrorListener import ConsoleErrorListener
@@ -88,7 +91,9 @@ def main():
         listener = MyListener()
         walker = ParseTreeWalker()
         walker.walk(listener, tree)
-        for i in listener.listPipe:
+        for i in range(0, len(listener.listPipe)):
+            if(len(listener.listPipe[i].pipeFunctions) == 0):
+                continue
             listener.listPipe[i].executePipes()
     except Exception as e:
         print("Exception occurred during parsing:", e)
