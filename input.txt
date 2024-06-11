@@ -1,0 +1,11 @@
+from import_test_1 import split_period
+
+x = "    MYSTriNG   "
+x = [1, 0, 3, 0, -2, -3, 44.5, 5]
+x |> abs() |> squareAll() |> increment(333) |> decrement(-33) |> multiply(3) |> division(2) |> arr2Str() |> replaceAll("5", "a") |> split_period()
+
+g = [1, 2, 3, 4]
+g |> findMax()
+
+y = "    MYSTriNG   "
+y |> trim()|> replaceAll("i", "o")

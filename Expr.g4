@@ -1,30 +1,28 @@
 grammar Expr;
 
-prog: (variable_assignment | expression)* EOF ;
+prog: imports (assignment single_pipe_statement*)+;
 
-expression: variable_access single_pipe_symbol function_call (single_pipe_symbol function_call)* ;
+imports: import_statement*;
 
-variable_assignment: VAR_NAME '=' (variable_value | STRING) ;
+import_statement: 'from' NAME 'import' NAME;
 
-variable_value: array_value | STRING ;
+single_pipe_statement: NAME (SPIPE function_call)+;
 
-array_value: '[' (number (',' number)*)? ']' ;
+function_call: NAME '(' args ')' | NAME '(' ')';
 
-number: FLOAT | INT | '-' INT ;
+assignment: NAME '=' (value | array);
 
-variable_access: VAR_NAME ('[' index=INT ']')? ;
+array: '[' ']' | '[' (value | array) (',' (value | array))* ']';
 
-function_call: VAR_NAME left_par args right_par | VAR_NAME left_par right_par ;
+value: INT | FLOAT | STRING | BOOL | CHAR | NAME;
 
-arg: number | STRING | array_value ;
-args: arg (',' arg)* ;
+args: (value | array) (',' (value | array))*;
 
-single_pipe_symbol: '|>';
-
-VAR_NAME: [a-zA-Z][a-zA-Z0-9]* ;
-FLOAT   : [0-9]+[.][0-9]+ ;
-left_par: '(' ;
-right_par: ')' ;
-STRING: '"' ~["]* '"' ;
-INT: [0-9]+ ;
-WS: [ \t\r\n]+ -> skip ;
+INT: [0-9]+ | [-][0-9]+;
+FLOAT: [0-9]+[.][0-9]+ | [-][0-9]+[.][0-9]+;
+CHAR: ["][a-zA-Z0-9]["];
+STRING: ["]~["]*["];
+WS: [ \t\r\n]+ -> skip;
+NAME: [a-zA-Z][a-zA-Z0-9_]*;
+BOOL: 'true' | 'false';
+SPIPE: [|][>];

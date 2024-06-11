@@ -19,11 +19,10 @@ class ExprListener(ParseTreeListener):
         def __str__(self):
             return str(self.value)
 
-    def __init__(self, debug=False):
+    def __init__(self):
         self.variables = []
         self.current_variable = None
         self.function_handler = FunctionHandler()
-        self.debug = debug
 
     def add_variable(self, variable):
         for var in self.variables:
@@ -91,8 +90,7 @@ class ExprListener(ParseTreeListener):
 
     # Exit a parse tree produced by ExprParser#prog.
     def exitProg(self, ctx:ExprParser.ProgContext):
-        if self.debug:
-            for var in self.variables: print(f'{var.name} => {var.value} ({var.type})')
+        for var in self.variables: print(f'{var.name} => {var.value} ({var.type})')
         pass
 
 
@@ -110,11 +108,14 @@ class ExprListener(ParseTreeListener):
     def enterImport_statement(self, ctx:ExprParser.Import_statementContext):
         import importlib
 
+
         file_name = ctx.NAME()[0].getText()
         function_name = ctx.NAME()[1].getText()
 
         module = importlib.import_module(file_name)
         function = getattr(module, function_name)
+
+
 
         self.function_handler.add_function(function_name, function)
 
@@ -132,9 +133,8 @@ class ExprListener(ParseTreeListener):
         var_name = ctx.NAME().getText()
         var = self.get_var(var_name)
 
-        if self.debug:
-            print("-----------------------------")
-            print(f'{var_name} = <<{var.value}>>')
+        print("-----------------------------")
+        print(f'{var_name} = {var.value}')
 
         if not var:
             raise Exception("Variable not found")
@@ -147,16 +147,16 @@ class ExprListener(ParseTreeListener):
                 if function.args():
                     for arg in function.args().value():
                         args.append(self.get_var_value(arg))
+                print("->", var)
                 result = self.function_handler.execute(var.value, function.NAME().getText(), args)
-                if self.debug:
-                    print(f"----> ({function.NAME().getText()}) <<{result}>>")
+                print(f"----> ({function.NAME().getText()})", result)
                 result_type = type(result).__name__
                 var.value = result
                 var.type = result_type
 
-        if self.debug:
-            print(f'{var_name} = {var.value}')
-            print("-----------------------------")
+
+        print(f'{var_name} = {var.value}')
+        print("-----------------------------")
 
     # Exit a parse tree produced by ExprParser#single_pipe_statement.
     def exitSingle_pipe_statement(self, ctx:ExprParser.Single_pipe_statementContext):
